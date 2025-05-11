@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | Invictus Performance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #FFD700;
+            --accent: #FFFFFF;
+            --text: #E0E0E0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+       .logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+/* Retina Display */
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+    .logo-img {
+        height: 60px;
+    }
+}
+
+header.scrolled .logo-img {
+    height: 40px;
+}
+
+/* Remove o logo-text antigo */
+.logo-text {
+    display: none;
+}
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Portfolio Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: #1a1a1a;
+            color: var(--text);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 20px;
+        }
+        
+        .portfolio-overlay h3 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .portfolio-overlay p {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #1a1a1a;
+            color: var(--secondary);
+            border-radius: 50%;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: rgba(0, 0, 0, 0.95);
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .filter-buttons {
+                gap: 5px;
+            }
+            
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+    <div class="container header-container">
+        <div class="logo">
+            <img src="logo_1.png" alt="Invictus Performance Logo" class="logo-img">
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav id="nav">
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Quem Somos</a></li>
+                <li><a href="portfolio.html">Portfólio</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#gallery">Projetos</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Portfolio Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nosso Portfólio</h2>
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="audi">Audi</button>
+                <button class="filter-btn" data-filter="vw">VW</button>
+                <button class="filter-btn" data-filter="bmw">BMW</button>
+                <button class="filter-btn" data-filter="jeep">Jeep</button>
+                <button class="filter-btn" data-filter="mercedes">Mercedes</button>
+                <button class="filter-btn" data-filter="mini">Mini</button>
+                <button class="filter-btn" data-filter="porsche">Porsche</button>
+                <button class="filter-btn" data-filter="lamborghini">Lamborghini</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Audi Projects -->
+                <div class="portfolio-item" data-brand="audi">
+                    <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Audi RS3">
+                    <div class="portfolio-overlay">
+                        <h3>Audi RS3 Sportback</h3>
+                        <p>Reprogramação Stage 2 + Suspensão</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-brand="audi">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Audi RS5">
+                    <div class="portfolio-overlay">
+                        <h3>Audi RS5 Coupe</h3>
+                        <p>Preparação completa Stage 3</p>
+                    </div>
+                </div>
+                
+                <!-- VW Projects -->
+                <div class="portfolio-item" data-brand="vw">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Golf GTI">
+                    <div class="portfolio-overlay">
+                        <h3>VW Golf GTI</h3>
+                        <p>Reprogramação Stage 1 + Escapamento</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-brand="vw">
+                    <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="VW Jetta">
+                    <div class="portfolio-overlay">
+                        <h3>VW Jetta GLI</h3>
+                        <p>Preparação completa + Rodas</p>
+                    </div>
+                </div>
+                
+                <!-- BMW Projects -->
+                <div class="portfolio-item" data-brand="bmw">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="BMW M4">
+                    <div class="portfolio-overlay">
+                        <h3>BMW M4 Competition</h3>
+                        <p>Reprogramação + Freios Performance</p>
+                    </div>
+                </div>
+                
+                <!-- Jeep Projects -->
+                <div class="portfolio-item" data-brand="jeep">
+                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Jeep Renegade">
+                    <div class="portfolio-overlay">
+                        <h3>Jeep Renegade Trailhawk</h3>
+                        <p>Suspensão Off-Road + Reprogramação</p>
+                    </div>
+                </div>
+                
+                <!-- Mercedes Projects -->
+                <div class="portfolio-item" data-brand="mercedes">
+                    <img src="https://images.unsplash.com/photo-1514316703785-17564b513f42?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mercedes AMG">
+                    <div class="portfolio-overlay">
+                        <h3>Mercedes AMG GT</h3>
+                        <p>Preparação completa Stage 3</p>
+                    </div>
+                </div>
+                
+                <!-- Porsche Projects -->
+                <div class="portfolio-item" data-brand="porsche">
+                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Porsche 911">
+                    <div class="portfolio-overlay">
+                        <h3>Porsche 911 Turbo S</h3>
+                        <p>Reprogramação Stage 2 + Aerodinâmica</p>
+                    </div>
+                </div>
+                
+                <!-- Lamborghini Projects -->
+                <div class="portfolio-item" data-brand="lamborghini">
+                    <img src="https://images.unsplash.com/photo-1547038577-da80abbc4f19?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Lamborghini Huracan">
+                    <div class="portfolio-overlay">
+                        <h3>Lamborghini Huracan</h3>
+                        <p>Manutenção completa + Revisão</p>
+                    </div>
+                </div>
+                
+                <!-- Mini Projects -->
+                <div class="portfolio-item" data-brand="mini">
+                    <img src="https://images.unsplash.com/photo-1551836026-d1aae2f4d1f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mini Cooper">
+                    <div class="portfolio-overlay">
+                        <h3>Mini Cooper S</h3>
+                        <p>Reprogramação + Customização</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="logo-invictus.png" alt="Invictus Performance Logo">
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Início</a>
+                <a href="index.html#about">Quem Somos</a>
+                <a href="portfolio.html">Portfólio</a>
+                <a href="index.html#services">Serviços</a>
+                <a href="index.html#gallery">Projetos</a>
+                <a href="index.html#contact">Contato</a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Invictus Performance. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Portfolio Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all') {
+                        item.style.display = 'block';
+                    } else {
+                        if (item.getAttribute('data-brand') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

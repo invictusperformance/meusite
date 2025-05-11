@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Scream';
+    src: url('Scream.woff2') format('woff2'),
+        url('Scream.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

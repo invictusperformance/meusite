@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invictus Performance | Manutenção e Preparação Automotiva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #FFD700;
+            --accent: #FFFFFF;
+            --text: #E0E0E0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Russo One', sans-serif;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-img {
+    height: 50px; /* Tamanho padrão */
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+/* Ajuste para telas Retina (alta resolução) */
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) {
+    .logo-img {
+        height: 70px; /* Aumenta a nitidez em telas retina */
+    }
+}
+
+/* Efeito ao rolar a página */
+header.scrolled .logo-img {
+    height: 40px; /* Reduz levemente no scroll */
+}
+
+/* Remove o texto antigo do logo (se existir) */
+.logo-text {
+    display: none !important;
+}
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+                url('assets/img/GRADE PRINCIPAL.JPEG') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            width: 100%;
+            padding-top: 80px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h1 span {
+            color: var(--secondary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text);
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary);
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+                url('assets/img/IMG_3626.PNG') 
+                no-repeat center center/cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: #111;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 3px solid var(--secondary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .service-card p {
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h3 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .gallery-overlay p {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: #111;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .info-icon {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .info-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .info-text p, .info-text a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .info-text a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--secondary);
+            color: var(--primary);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e6c300;
+        }
+        
+        .map-container {
+            margin-top: 40px;
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #1a1a1a;
+            color: var(--secondary);
+            border-radius: 50%;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: rgba(0, 0, 0, 0.95);
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+   <header id="header">
+    <div class="container header-container">
+        <div class="logo">
+            <img src="logo_1.png" alt="Invictus Performance" class="logo-img">
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav id="nav">
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Quem Somos</a></li>
+                <li><a href="portfolio.html">Portfólio</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#gallery">Projetos</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>INVICTUS <span>PERFORMANCE</span></h1>
+            <p>Manutenção especializada, preparação de motores e reprogramação de ECU. Seu carro no máximo desempenho com a qualidade Invictus Performance.</p>
+            <div class="btn-container">
+                <a href="#contact" class="btn">Agende seu serviço</a>
+                <a href="#services" class="btn btn-outline">Nossos serviços</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quem Somos</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>A <span>Invictus Performance</span></h3>
+                    <p>A Invictus Performance é especializada em manutenção, revisão e preparação de automóveis de alto desempenho. Nossa equipe de profissionais altamente qualificados trabalha com paixão e precisão para oferecer serviços que atendam às expectativas dos clientes mais exigentes.</p>
+                    <p>Somos representantes oficiais da Armada Performance em reprogramações de ECU e TCU, trazendo tecnologia de ponta para extrair o máximo desempenho do seu veículo com total segurança e confiabilidade.</p>
+                    <p>Nosso compromisso é com a excelência em cada detalhe, utilizando equipamentos de última geração e componentes da mais alta qualidade para garantir que seu veículo esteja sempre em perfeitas condições.</p>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Manutenção Preventiva</h3>
+                    <p>Serviços periódicos para manter seu veículo em perfeito estado, utilizando peças de qualidade e mão de obra especializada.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Preparação de Motores</h3>
+                    <p>Aumento de performance com modificações cuidadosamente planejadas para extrair o máximo do seu motor com confiabilidade.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Reprogramação de Motor</h3>
+                    <p>Representante oficial Armada Performance. Reprogramação personalizada para melhorar desempenho, consumo e dirigibilidade.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Revisões Completas</h3>
+                    <p>Check-up detalhado com diagnóstico computadorizado para identificar e corrigir qualquer problema no seu veículo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Projetos</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/img/IMG_0490.JPEG" alt="Projeto 1">
+                    <div class="gallery-overlay">
+                        <h3>Golf GTI Stage 4 470whp</h3>
+                        <p>Preparação completa + reprogramação ECU + TCU</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/IMG_0413.JPEG" alt="Projeto 2">
+                    <div class="gallery-overlay">
+                        <h3>Porsche 911 991.2</h3>
+                        <p>STG2 Full + Catback 420whp</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/RS5 STG2.JPEG" alt="Projeto 3">
+                    <div class="gallery-overlay">
+                        <h3>Audi RS5 STG2 580cv e 72kgfm</h3>
+                       <p>STG2 + Intake APR</p>
+                </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/IMG_0903.JPEG" alt="Projeto 4">
+                    <div class="gallery-overlay">
+                        <h3>BMW 320I 330cv e 48kgfm</h3>
+                        <p>STG2 + CATBACK NO E40</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/IMG_1186.JPEG" alt="Projeto 5">
+                    <div class="gallery-overlay">
+                        <h3>Jetta GLi 280whp e 50kgfm</h3>
+                        <p>STG2 full + Remap de cambio </p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/IMG_2234.JPEG" alt="Projeto 6">
+                    <div class="gallery-overlay">
+                        <h3>BMW 340I 510cv e 64kgfm</h3>
+                        <p>STG2 Full</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Contact Section -->
+<section class="section contact" id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Contato</h2>
+        </div>
+        <div class="contact-columns">
+            <!-- Coluna da Esquerda - Dados de Contato -->
+            <div class="contact-info">
+                <h3>Entre em Contato</h3>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>Endereço</h4>
+                        <p>R. Pedro Domingos Vitali, 910 - Parque Itália, Campinas - SP, 13036-180</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>Telefone</h4>
+                        <p><a href="tel:+5519995258236">(19) 99525-8236</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>Email</h4>
+                        <p><a href="mailto:contato@invictusperformance.com.br">contato@invictusperformance.com.br</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>Horário de Funcionamento</h4>
+                        <p>Segunda a Sexta: 08:30 - 18:30</p>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna da Direita - Mapa -->
+            <div class="contact-map">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3676.244588779422!2d-47.0797229246879!3d-22.8695505795589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c8c1c1b1b1b1%3A0x1b1b1b1b1b1b1b1b!2sR.%20Pedro%20Domingos%20Vitali%2C%20910%20-%20Parque%20It%C3%A1lia%2C%20Campinas%20-%20SP%2C%2013036-180!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulário (mantido abaixo em todas as resoluções) -->
+        <div class="contact-form-container">
+            <form id="formContato">
+                <!-- ... (mantenha o formulário existente) ... -->
+            </form>
+        </div>
+    </div>
+</section>
+
+   <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-logo">
+            <img src="logo_1.png" alt="Invictus Performance Logo">
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/invictusperformancebr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/invictusperformancebr/?locale=pt_BR" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.link/9voqeh" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.youtube.com/@InvictusPerformance2020" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Início</a>
+            <a href="index.html#about">Quem Somos</a>
+            <a href="portfolio.html">Portfólio</a>
+            <a href="index.html#services">Serviços</a>
+            <a href="index.html#gallery">Projetos</a>
+            <a href="index.html#contact">Contato</a>
+        </div>
+        <div class="copyright">
+            &copy; 2020 Invictus Performance. Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        const form = document.getElementById('formContato');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to a server
+            // For this example, we'll just show an alert
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            form.reset();
+        });
+        
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.service-card, .gallery-item, .contact-form, .contact-info');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.service-card, .gallery-item, .contact-form, .contact-info').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body><!-- Botão Flutuante do WhatsApp -->
+<div class="whatsapp-float">
+    <a href="https://wa.link/9voqeh" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
+
+<style>
+    /* Estilos do Botão do WhatsApp */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background-color: #25D366;
+        color: #FFF;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .whatsapp-float a {
+        color: #FFF;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .whatsapp-float:hover {
+        background-color: #128C7E;
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            width: 50px;
+            height: 50px;
+            font-size: 26px;
+            bottom: 20px;
+            right: 20px;
+        }
+    }
+</style>
+
+
+</html>
+
